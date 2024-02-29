@@ -93,7 +93,27 @@ label {
 }
 
 .category-menu select {
+    text-align: left;
     padding: 8px;
     font-size: 16px;
     border-radius: 4px;
 }
+
+.game-over-background {
+    background-color: rgba(255, 0, 0, 0.5); /* Red background with 50% opacity */
+}  
+
+.restart-button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+  

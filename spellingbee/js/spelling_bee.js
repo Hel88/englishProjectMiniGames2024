@@ -5,7 +5,6 @@ const wordLists = {
   // Add more categories and their word lists as needed
 };
 
-
 // Define variables
 let currentWordIndex = -1; // Initialize currentWordIndex to -1
 let score = 0; // Initialize score to 0
@@ -15,8 +14,7 @@ let timeLeft = maxTime; // Initialize time left to the maximum time
 let guessedWords = []; // Keep track of the words the player has guessed
 let wordList = []; // Define wordList variable
 let letterTimeouts = []; // Store timeouts for each letter
-
-
+let timeout; // Store the timeout for the first letter
 
 // Function to change the category
 function changeCategory() {
@@ -30,25 +28,31 @@ function changeCategory() {
   currentWordIndex = -1;
   score = 0;
   guessedWords = [];
-  
-  // Start the game
-  displayWord();
-  startTimer();
-}
+  timeLeft = maxTime;
 
-  
-function getRandomWord() {
-    return wordList[Math.floor(Math.random() * wordList.length)];
-}
-
-
-function displayWord() {
-  // Clear previous timeouts
+  // Clear timeouts
+  clearTimeout(timeout);
   for (let timeout of letterTimeouts) {
     clearTimeout(timeout);
   }
   letterTimeouts = [];
 
+  // Update UI
+  document.getElementById('score').innerText = `Score: ${score}`;
+  document.getElementById('timer').innerText = `Time left: ${timeLeft} seconds`;
+  document.getElementById('message').innerText = '';
+
+  // Start the game
+  displayWord();
+  startTimer(); // Call startTimer again
+}
+
+
+function getRandomWord() {
+  return wordList[Math.floor(Math.random() * wordList.length)];
+}
+
+function displayWord() {
   let newIndex;
   do {
     newIndex = Math.floor(Math.random() * wordList.length);
@@ -63,10 +67,10 @@ function displayWord() {
   wordDisplayElement.innerHTML = ''; // Clear previous word display
 
   // Display first letter after 5 seconds
-  setTimeout(() => {
+  timeout = setTimeout(() => {
     wordDisplayElement.innerText = word.charAt(0).toUpperCase();
 
-    // Calculate delay between each subsequent letter based on maxTime and word length
+    // Calculate delay between each subsequent letter based on maxTime (minus initial 5 seconds) and word length
     const delay = (maxTime - 5) / (word.length - 1) * 1000; // Adjust seconds to milliseconds
 
     // Display each subsequent letter with a delay
@@ -86,19 +90,17 @@ function displayWord() {
 }
 
 
-
-
 function checkSpelling() {
   const userInput = document.getElementById('userInput').value.trim().toLowerCase();
   const correctWord = wordList[currentWordIndex]; // Retrieve the correct word from the wordList
   
-  if (userInput === correctWord) {
-    // Clear letter timeouts
-    for (let timeout of letterTimeouts) {
-      clearTimeout(timeout);
-    }
-    letterTimeouts = [];
+  // Clear letter timeouts
+  for (let timeout of letterTimeouts) {
+    clearTimeout(timeout);
+  }
+  letterTimeouts = [];
 
+  if (userInput === correctWord) {
     // Calculate score based on time left
     const timeBonus = Math.ceil((timeLeft / maxTime) * 100); // Adjust multiplier for scoring
     score += timeBonus;
@@ -107,10 +109,9 @@ function checkSpelling() {
     document.getElementById('message').innerText = 'Correct!';
     
     // Reset the timer
-    clearInterval(timerInterval);
     timeLeft = maxTime;
     document.getElementById('timer').innerText = `Time left: ${timeLeft} seconds`;
-    startTimer(); // Start the timer again
+
     // Display a new word
     checkEndGame();
     displayWord();
@@ -134,6 +135,9 @@ function startTimer() {
       document.getElementById('message').innerText = 'Time\'s up! Game over.';
       document.getElementById('userInput').disabled = true; // Disable input field when time is up
       document.getElementById('checkButton').disabled = true; // Disable check button when time is up
+      document.getElementById('wordDisplay').innerText = wordList[currentWordIndex]; // Display the correct word
+      document.getElementById('imageDisplay').src = 'img/go.png'; // Change the path to the image folder
+      document.body.classList.add('game-over-background');
     }
   }, 1000); // Update the timer every second
 }
@@ -149,9 +153,19 @@ function checkEndGame() {
   }
 }
 
+function restartGame() {
+  document.body.classList.remove('game-over-background');
+  document.getElementById('userInput').disabled = false;
+  document.getElementById('checkButton').disabled = false;
+  document.getElementById('userInput').value = '';
+  clearTimeout(timeout); // Clear the first letter timeout
+  clearInterval(timerInterval); // Clear the timer interval
+  changeCategory();
+}
 
 // Start the game
 changeCategory();
 
 // Attach event listener to check button
 document.getElementById('checkButton').addEventListener('click', checkSpelling);
+document.getElementById('restartButton').addEventListener('click', restartGame);
