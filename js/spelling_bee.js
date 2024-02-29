@@ -42,7 +42,6 @@ function getRandomWord() {
 }
 
 
-
 function displayWord() {
   // Clear previous timeouts
   for (let timeout of letterTimeouts) {
@@ -61,7 +60,7 @@ function displayWord() {
   const word = wordList[currentWordIndex];
   const image = "img/" + word + ".jpg"; // Change the path to the image folder
   const wordDisplayElement = document.getElementById('wordDisplay');
-  wordDisplayElement.innerHTML = ''; // Clear previous word
+  wordDisplayElement.innerHTML = ''; // Clear previous word display
 
   // Display first letter after 5 seconds
   setTimeout(() => {
@@ -85,6 +84,7 @@ function displayWord() {
 
   checkEndGame();
 }
+
 
 
 
@@ -155,4 +155,3 @@ changeCategory();
 
 // Attach event listener to check button
 document.getElementById('checkButton').addEventListener('click', checkSpelling);
-    
