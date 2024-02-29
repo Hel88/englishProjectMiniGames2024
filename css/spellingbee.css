@@ -82,3 +82,18 @@ label {
     text-align: center;
     font-size: 16px;
 }
+
+.category-menu {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.category-menu label {
+    margin-right: 10px;
+}
+
+.category-menu select {
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 4px;
+}

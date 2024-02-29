@@ -1,22 +1,47 @@
-const wordList = [
-    { word: 'apple', image: 'img/apple.jpg' },
-    { word: 'banana', image: 'img/banana.jpg' },
-    { word: 'cherry', image: 'img/cherry.jpg' },
-    { word: 'pear', image: 'img/pear.jpg' },
-    { word: 'lemon', image: 'img/lemon.jpg' }
-];
-let currentWordIndex = -1;
-let score = 0;
-let timerInterval;
+// Define word lists for different categories
+const wordLists = {
+  fruits: ['apple', 'banana', 'cherry', 'lemon', 'pear'],
+  vegetables: ['carrot', 'broccoli', 'tomato', 'cucumber', 'spinach']
+  // Add more categories and their word lists as needed
+};
+
+
+// Define variables
+let currentWordIndex = -1; // Initialize currentWordIndex to -1
+let score = 0; // Initialize score to 0
+let timerInterval; // Store the interval for the timer
 let maxTime = 20; // Change this value to set the initial time limit in seconds
-let timeLeft = maxTime;
+let timeLeft = maxTime; // Initialize time left to the maximum time
 let guessedWords = []; // Keep track of the words the player has guessed
+let wordList = []; // Define wordList variable
+let letterTimeouts = []; // Store timeouts for each letter
+
+
+
+// Function to change the category
+function changeCategory() {
+  const categorySelect = document.getElementById('categorySelect');
+  const selectedCategory = categorySelect.value;
+  
+  // Load words based on the selected category
+  wordList = wordLists[selectedCategory];
+  
+  // Reset variables
+  currentWordIndex = -1;
+  score = 0;
+  guessedWords = [];
+  
+  // Start the game
+  displayWord();
+  startTimer();
+}
+
   
 function getRandomWord() {
     return wordList[Math.floor(Math.random() * wordList.length)];
 }
 
-let letterTimeouts = [];
+
 
 function displayWord() {
   // Clear previous timeouts
@@ -33,7 +58,8 @@ function displayWord() {
   currentWordIndex = newIndex;
   guessedWords.push(currentWordIndex); // Add the index to guessedWords array
 
-  const { word, image } = wordList[currentWordIndex];
+  const word = wordList[currentWordIndex];
+  const image = "img/" + word + ".jpg"; // Change the path to the image folder
   const wordDisplayElement = document.getElementById('wordDisplay');
   wordDisplayElement.innerHTML = ''; // Clear previous word
 
@@ -57,20 +83,14 @@ function displayWord() {
   const imageElement = document.getElementById('imageDisplay');
   imageElement.src = image;
 
-  // Check if all words have been guessed
-  if (guessedWords.length === wordList.length) {
-    // Stop the timer
-    clearInterval(timerInterval);
-    document.getElementById('timer').innerText = '';
-    document.getElementById('message').innerText = 'Congratulations! You have guessed all the words!';
-    document.getElementById('userInput').disabled = true; // Disable input field
-    document.getElementById('checkButton').disabled = true; // Disable check button
-  }
+  checkEndGame();
 }
+
+
 
 function checkSpelling() {
   const userInput = document.getElementById('userInput').value.trim().toLowerCase();
-  const correctWord = wordList[currentWordIndex].word; // Correct the retrieval of the correct word
+  const correctWord = wordList[currentWordIndex]; // Retrieve the correct word from the wordList
   
   if (userInput === correctWord) {
     // Clear letter timeouts
@@ -92,6 +112,7 @@ function checkSpelling() {
     document.getElementById('timer').innerText = `Time left: ${timeLeft} seconds`;
     startTimer(); // Start the timer again
     // Display a new word
+    checkEndGame();
     displayWord();
   } else {
     document.getElementById('message').innerText = 'Incorrect. Try again.';
@@ -100,6 +121,7 @@ function checkSpelling() {
   // Clear input field
   document.getElementById('userInput').value = '';  
 }
+
 
 
 function startTimer() {
@@ -116,9 +138,20 @@ function startTimer() {
   }, 1000); // Update the timer every second
 }
 
+function checkEndGame() {
+  if (guessedWords.length === wordList.length) {
+    // Stop the timer
+    clearInterval(timerInterval);
+    document.getElementById('timer').innerText = '';
+    document.getElementById('message').innerText = 'Congratulations! You have guessed all the words!';
+    document.getElementById('userInput').disabled = true; // Disable input field
+    document.getElementById('checkButton').disabled = true; // Disable check button
+  }
+}
+
+
 // Start the game
-displayWord();
-startTimer();
+changeCategory();
 
 // Attach event listener to check button
 document.getElementById('checkButton').addEventListener('click', checkSpelling);

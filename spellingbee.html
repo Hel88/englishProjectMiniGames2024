@@ -9,6 +9,17 @@
 </head>
 <body>
   <h1>Spelling Bee Game</h1>
+
+  <!-- Category Selection Menu -->
+  <div class="category-menu">
+    <label for="categorySelect">Select Category:</label>
+    <select id="categorySelect" onchange="changeCategory()">
+      <option value="fruits">Fruits</option>
+      <option value="vegetables">Vegetables</option>
+      <!-- Add more categories as needed -->
+    </select>
+  </div>
+
   <div id="gameArea">
     <div>
         <p id="timer">Time left: 20 seconds</p>
@@ -16,15 +27,15 @@
         <p id="wordDisplay"></p>
       </div>
     <div>
-      <label id="labelUser">Enter the word:</label>
+      <label for="userInput">Enter the word:</label>
       <input type="text" id="userInput" placeholder="Type your answer here" autocomplete="off">
       <button id="checkButton">Check</button>
     </div>
     <div id="gameInfo">
       <p id="message"></p>
       <p id="score">Score: 0</p>
+      
     </div>
   </div>
-
 </body>
 </html>
