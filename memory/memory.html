@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Game</title>
+    <link rel="stylesheet" href="css/memory.css">
+</head>
+<body>
+    <h1>Memory Game</h1>
+    <div class="instructions">
+        <p>Click on the cards to find matching pairs.</p>
+        <p>Number of moves: <span id="moves">0</span></p>
+        <p>Number of pairs found: <span id="score"></span></p>
+    </div>
+    <div class="memory-game">
+        <div class="game-board" id="game-board"></div>
+        <button class="restart-button" onclick="restartGame()">Restart Game</button>
+    </div>
+    <div id="debug"></div>
+    <script src="js/memory.js"></script>
+</body>
+</html>
