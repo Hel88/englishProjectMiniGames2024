@@ -42,7 +42,6 @@ h1 {
 }
 
 .card {
-    /* position: relative; */
     display: inline-block;
     width: 100px;
     height: 100px;
@@ -54,15 +53,13 @@ h1 {
     background-color: lightblue;
     text-align: center;
     transition: transform 0.3s;
-    /* perspective: 1000px;
-    transform-style: preserve-3d; */
-
-
+    color: lightblue;
 }
 
 .card.flipped {
     /* transform: rotateY(180deg); */
-    transform-origin: rotateY(180deg);
+    transform: rotateY(360deg);
+    color: black
     /* text-transform: gradient(90deg, red, blue); */
 }
 

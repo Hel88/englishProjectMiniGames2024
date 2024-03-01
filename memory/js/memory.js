@@ -13,8 +13,7 @@ let gameBoard = document.getElementById('game-board');
 let cards = [];
 let flippedCards = [];
 let score = 0;
-document.getElementById('debug').textContent = words[2].french//debug
-
+let numberOfMoves=0;
 
 
 // Shuffle the cards
@@ -30,6 +29,7 @@ function initGame() {
     gameBoard.innerHTML = '';
     cards = [];
     document.getElementById('score').textContent = score;
+    document.getElementById('moves').textContent = numberOfMoves;
     // Create two cards for each word
     words.forEach(word => {
         for (let i = 0; i < 2; i++) {
@@ -44,7 +44,7 @@ function initGame() {
     cards.forEach(card => {
         const cardElement = document.createElement('div');
         cardElement.classList.add('card');
-        //cardElement.textContent = '';
+        cardElement.textContent = '???';
         cardElement.addEventListener('click', () => flipCard(cardElement, card));
         gameBoard.appendChild(cardElement);
     });
@@ -60,7 +60,9 @@ function flipCard(cardElement, card) {
         flippedCards.push({ element: cardElement, word: card.word });
 
         if (flippedCards.length === 2) {//si 2 cartes sont retournées
-            setTimeout(checkMatch, 1000);//timer pour les remettre à l'endroit
+            setTimeout(checkMatch, 1000);
+            numberOfMoves++;
+            document.getElementById('moves').textContent = numberOfMoves;
         }
     }
 }
@@ -98,7 +100,7 @@ function checkMatch() {
         //les remettre face cachée
         flippedCards.forEach(card => {
             card.element.classList.remove('flipped');
-            card.element.textContent = '';
+            card.element.textContent = '???';
         });
     }
     flippedCards = [];
