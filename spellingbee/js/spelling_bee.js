@@ -15,11 +15,12 @@ let guessedWords = []; // Keep track of the words the player has guessed
 let wordList = []; // Define wordList variable
 let letterTimeouts = []; // Store timeouts for each letter
 let timeout; // Store the timeout for the first letter
+let selectedCategory = "fruits"; // Initialize selectedCategory to fruits
 
 // Function to change the category
 function changeCategory() {
   const categorySelect = document.getElementById('categorySelect');
-  const selectedCategory = categorySelect.value;
+  selectedCategory = categorySelect.value;
   
   // Load words based on the selected category
   wordList = wordLists[selectedCategory];
@@ -43,10 +44,10 @@ function changeCategory() {
   document.getElementById('message').innerText = '';
 
   // Start the game
+  loadScoreboardData(selectedCategory);
   displayWord();
   startTimer(); // Call startTimer again
 }
-
 
 function getRandomWord() {
   return wordList[Math.floor(Math.random() * wordList.length)];
@@ -89,7 +90,6 @@ function displayWord() {
   checkEndGame();
 }
 
-
 function checkSpelling() {
   const userInput = document.getElementById('userInput').value.trim().toLowerCase();
   const correctWord = wordList[currentWordIndex]; // Retrieve the correct word from the wordList
@@ -123,8 +123,6 @@ function checkSpelling() {
   document.getElementById('userInput').value = '';  
 }
 
-
-
 function startTimer() {
   timerInterval = setInterval(() => {
     timeLeft--;
@@ -138,6 +136,8 @@ function startTimer() {
       document.getElementById('wordDisplay').innerText = wordList[currentWordIndex]; // Display the correct word
       document.getElementById('imageDisplay').src = 'img/go.png'; // Change the path to the image folder
       document.body.classList.add('game-over-background');
+      // Call main function with the player's score
+      updateScoreboard(score);
     }
   }, 1000); // Update the timer every second
 }
@@ -146,10 +146,14 @@ function checkEndGame() {
   if (guessedWords.length === wordList.length) {
     // Stop the timer
     clearInterval(timerInterval);
+    letterTimeouts.forEach(timeout => clearTimeout(timeout)); // Clear letter timeouts
     document.getElementById('timer').innerText = '';
     document.getElementById('message').innerText = 'Congratulations! You have guessed all the words!';
     document.getElementById('userInput').disabled = true; // Disable input field
     document.getElementById('checkButton').disabled = true; // Disable check button
+    document.getElementById('wordDisplay').innerText = ''; // Clear word display
+    document.getElementById('imageDisplay').src = 'img/celebrate.png'; // Change the path to the image folder
+    updateScoreboard(score); // Call main function with the player's score
   }
 }
 
@@ -158,13 +162,21 @@ function restartGame() {
   document.getElementById('userInput').disabled = false;
   document.getElementById('checkButton').disabled = false;
   document.getElementById('userInput').value = '';
-  clearTimeout(timeout); // Clear the first letter timeout
+  letterTimeouts.forEach(timeout => clearTimeout(timeout)); // Clear letter timeouts
   clearInterval(timerInterval); // Clear the timer interval
   changeCategory();
 }
 
-// Start the game
-changeCategory();
+// Main function to handle score input
+function updateScoreboard(score) {
+    addPlayerScore(score);
+}
+
+// Display scores on page load
+window.onload = function() {
+    loadScoreboardData(category);
+    restartGame();
+};
 
 // Attach event listener to check button
 document.getElementById('checkButton').addEventListener('click', checkSpelling);

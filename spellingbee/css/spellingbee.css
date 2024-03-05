@@ -10,17 +10,24 @@ h1 {
     color: #333;
 }
 
+/* Game area styles */
 #gameArea {
-    max-width: 600px;
+    display: flex;
+    max-width: 1000px; /* Adjust the max-width as needed */
     margin: 20px auto;
-    padding: 20px;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+#gameInfo {
+    flex: 1;
+    padding: 20px;
+}
+
 #gameArea > div {
-    margin-bottom: 20px;
+    flex: 1;
+    padding: 20px;
 }
 
 #imageDisplay {
@@ -107,13 +114,59 @@ label {
     background-color: #4CAF50; /* Green */
     border: none;
     color: white;
-    padding: 15px 32px;
+    font-weight: bold;
+    padding: 8px 16px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
+    font-size: 12px;
+    margin: 2px 1px;
     cursor: pointer;
-    border-radius: 10px;
+    border-radius: 5px;
 }
   
+
+/* Scoreboard styles */
+#scoreboard {
+    flex: 1;
+    max-width: 300px; /* Adjust the max-width as needed */
+    margin: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#scoreboard h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#scoreboard p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+/* Scoreboard table styles */
+#scoreboard table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#scoreboard th,
+#scoreboard td {
+    width: 50%;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    text-align: left;
+}
+
+#scoreboard th {
+    
+    background-color: #f0f0f0;
+}
+
+#scoreboard tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
