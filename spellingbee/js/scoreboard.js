@@ -1,4 +1,5 @@
 let category = "fruits";
+let spellingBeeScores = [];
 
 function displaySpellingBeeScores(scores, elementId) {
     const scoreboardBody = document.getElementById(elementId);
@@ -22,8 +23,10 @@ function displaySpellingBeeScores(scores, elementId) {
 
 // Function to add a player score to the scoreboard and save it to localStorage
 function addPlayerScore(score) {
-    // Add player score to the scoreboard
-    if (spellingBeeScores.length < 20 || score > spellingBeeScores[19].score) {
+    let savedScores = localStorage.getItem('spellingBeeScores' + category);
+    spellingBeeScores = savedScores ? JSON.parse(savedScores) : [];
+
+    if (spellingBeeScores.length < 20 || score > (spellingBeeScores[19]?.score || 0)) {
         const playerName = prompt("Congratulations! You've made it to the top 20! Please enter your name:");
         if (playerName) {
             // Add the player's score to the scoreboard
@@ -34,9 +37,9 @@ function addPlayerScore(score) {
             spellingBeeScores = spellingBeeScores.slice(0, 20);
             // Update the scoreboard display
             displaySpellingBeeScores(spellingBeeScores, "scoreboardBody");
-            
+
             // Save scoreboard data to localStorage
-            localStorage.setItem('spellingBeeScores'+category, JSON.stringify(spellingBeeScores));
+            localStorage.setItem('spellingBeeScores' + category, JSON.stringify(spellingBeeScores));
         }
     } else {
         alert("Your score doesn't qualify to be in the top 20. Keep practicing!");
