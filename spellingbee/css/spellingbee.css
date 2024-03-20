@@ -42,8 +42,8 @@ h1 {
 
 #wordDisplay {
     font-size: 24px;
+    font-weight: bold;
     text-align: center;
-    margin-bottom: 10px;
 }
 
 label {
@@ -169,4 +169,13 @@ label {
 
 #scoreboard tbody tr:nth-child(even) {
     background-color: #f9f9f9;
+}
+
+#clue{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+
 }

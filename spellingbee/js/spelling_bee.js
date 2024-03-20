@@ -21,7 +21,9 @@ function resetGame(){
   score = 0;
   timeLeft = maxTime;
   wordsToFind = []
+  clearInterval(clueInterval);
   clueInterval = null;
+  clearInterval(timerInterval);
   timerInterval = null;
 
   // Reset the UI
@@ -34,21 +36,6 @@ function resetGame(){
   document.getElementById('message').innerText = '';
   document.getElementById('wordDisplay').innerText = '';
   document.getElementById('imageDisplay').src = '';
-
-  //update scoreboard
-  loadScoreboardData(selectedCategory);
-
-  launchGame();
-}
-
-// Function to change the category
-function changeCategory(){
-  const categorySelect = document.getElementById('categorySelect');   
-  selectedCategory = categorySelect.value;
-
-  // Load words based on the selected category
-  wordsToFind = wordLists[selectedCategory];
-  resetGame();
 }
 
 function displayWord() {
@@ -166,11 +153,13 @@ function updateScoreboard(score) {
 }
 
 function launchGame() {
+  resetGame();
   const categorySelect = document.getElementById('categorySelect');
-  categorySelect.addEventListener('change', changeCategory);
+  if (categorySelect !== selectedCategory){
+    selectedCategory = categorySelect.value;
+  }
   wordsToFind = wordLists[selectedCategory];
   loadScoreboardData(selectedCategory);
-  
   displayWord();
 }
 
@@ -180,5 +169,5 @@ window.onload = function() {
 
 // Attach event listener to check button
 document.getElementById('checkButton').addEventListener('click', checkSpelling);
-document.getElementById('restartButton').addEventListener('click', resetGame);
+document.getElementById('restartButton').addEventListener('click', launchGame);
 

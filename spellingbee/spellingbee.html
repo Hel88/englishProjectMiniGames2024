@@ -17,12 +17,16 @@
           <select id="categorySelect">
               <option value="fruits">Fruits</option>
               <option value="vegetables">Vegetables</option>
+              <option value="colors">Colors</option>
           </select>
           <button class="restart-button" id="restartButton">Restart Game</button>
         </div>
         <p id="timer"></p>
         <img id="imageDisplay" src="" alt="Word Image">
-        <div id="wordDisplay"></div>
+        <div id="clue">
+          <h3>Clue:</h3>
+          <div id="wordDisplay"></div>
+        </div>
         <label for="userInput">Enter the word:</label>
         <input type="text" id="userInput" autocomplete="off">
         <button id="checkButton">Check</button>
