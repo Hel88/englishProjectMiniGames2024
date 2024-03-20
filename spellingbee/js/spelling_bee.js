@@ -1,7 +1,8 @@
 // Define the words to guess
 const wordLists = {
-  fruits: ['apple', 'banana', 'cherry', 'lemon', 'pear'],
-  vegetables: ['carrot', 'broccoli', 'tomato', 'cucumber', 'spinach']
+  fruits: ['apple', 'banana', 'cherry', 'lemon', 'pear','coconut','mango','orange','raspberry','strawberry'],
+  vegetables: ['carrot', 'tomato', 'salad', 'broccoli', 'radish', 'pumpkin', 'eggplant', 'beet', 'pepper', 'zucchini'],
+  colors: ['red', 'blue', 'green', 'yellow', 'orange', 'purple', 'pink', 'brown', 'black', 'white']
 };
 
 // Define variables
@@ -30,6 +31,7 @@ function resetGame(){
   document.getElementById('userInput').value = '';
   document.getElementById('score').innerText = `Score: ${score}`;
   document.getElementById('timer').innerText = `Time left: ${timeLeft} seconds`;
+  document.getElementById('message').innerText = '';
   document.getElementById('wordDisplay').innerText = '';
   document.getElementById('imageDisplay').src = '';
 
@@ -84,7 +86,7 @@ function clearClue() {
 
 function printImage(word) {
   const image = document.getElementById('imageDisplay');
-  image.src = `img/${word}.jpg`;
+  image.src = `img/${selectedCategory}/${word}.jpg`;
   image.alt = word;
 }
 
