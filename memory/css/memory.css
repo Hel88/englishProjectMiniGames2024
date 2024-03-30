@@ -93,16 +93,16 @@ h1 {
     margin: 5px;
     cursor: pointer;
     font-size: 20px;
-    background-color: #ff6b6b;
+    background-color: #1f6fd8;
     text-align: center;
     line-height: 90px;
     transition: transform 0.3s;
-    color: #ff6b6b;
+    color: #1f6fd8;
 }
 
 .card:hover {
-    background-color: #ff4757;
-    color: #ff4757;
+    background-color: #0360db;
+    color: #0360db;
 
 }
 
