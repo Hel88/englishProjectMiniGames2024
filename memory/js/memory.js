@@ -2,9 +2,7 @@ const words = [
     { english: "Dog", french: "Chien" },
     { english: "Cat", french: "Chat" },
     { english: "Bird", french: "Oiseau" },
-    { english: "Elephant", french: "Éléphant" },
     { english: "Tiger", french: "Tigre" },
-    { english: "Lion", french: "Lion" },
     { english: "Bear", french: "Ours" },
     { english: "Monkey", french: "Singe" }
 ];
@@ -14,6 +12,7 @@ let cards = [];
 let flippedCards = [];
 let score = 0;
 let numberOfMoves=0;
+var wordsFound = [];
 
 
 // Shuffle the cards
@@ -30,6 +29,7 @@ function initGame() {
     cards = [];
     document.getElementById('score').textContent = score;
     document.getElementById('moves').textContent = numberOfMoves;
+    //document.getElementById('wordsFound').textContent = wordsFound;
     // Create two cards for each word
     words.forEach(word => {
         for (let i = 0; i < 2; i++) {
@@ -53,7 +53,6 @@ function initGame() {
 // Flip the card
 function flipCard(cardElement, card) {
     
-
     if (flippedCards.length < 2 && !cardElement.classList.contains('flipped')) {
         cardElement.textContent = card.word;
         cardElement.classList.add('flipped');
@@ -71,25 +70,47 @@ function flipCard(cardElement, card) {
 function checkMatch() {
     let firstcard = flippedCards[0].word+'';
     let secondcard = flippedCards[1].word+'';
+    let firstcard_translation;
+    let firstcard_is_english;
+    // let word1 = flippedCards[0].word+'';
+    // let word2 = flippedCards[1].word+'';
 
     for (let m = 0; m < words.length; m++) {
-        if (words[m].english === firstcard) {
-            firstcard = words[m].french;
+        
+        if (words[m].english === firstcard){
+            firstcard_translation = words[m].french;
+            firstcard_is_english = true;
         }
-        if (words[m].english === secondcard) {
-            secondcard = words[m].french;
+        if (words[m].french === firstcard){
+            firstcard_translation = words[m].english;
+            firstcard_is_english = false;
         }
-
     }
-
     
-
-    if (firstcard === secondcard) {
-        flippedCards.forEach(card => {
+    if (firstcard_translation === secondcard) {
+            flippedCards.forEach(card => {
             card.element.classList.add('matched');
             card.matched = true;
         });
         score++;
+        if (firstcard_is_english){
+            wordsFound.push({english:firstcard, french:firstcard_translation});
+        }else{
+            wordsFound.push({english:firstcard_translation, french:firstcard});
+        }
+
+        // Sélection du tableau
+        var tableBody = document.querySelector('#wordsFound tbody');
+        wordsFound.forEach(function(word){
+            var row = tableBody.insertRow();
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            cell1.textContent= word.english;
+            cell2.textContent = word.french;
+        })
+
+        wordsFound=[];
+        
         document.getElementById('score').textContent = score;
         if (score === words.length) {
             setTimeout(() => {
@@ -109,8 +130,10 @@ function checkMatch() {
 // Restart the game
 function restartGame() {
     score = 0;
+    numberOfMoves = 0;
     flippedCards = [];
     initGame();
+    document.getElementById("wordsFound").textContent ="";
 }
 
 // Start the game

@@ -5,22 +5,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Memory Game</title>
     <link rel="stylesheet" href="css/memory.css">
+    <script src="js/scoreboard.js" defer></script>
 </head>
 <body>
-    <h1>Memory Game</h1>
-    <div class="instructions">
-        <p>Click on the cards to find matching pairs.</p>
-        <p>Number of moves: <span id="moves"></span></p>
-        <p>Number of pairs found: <span id="score"></span></p>
-    </div>
-    <div class="memory-game">
-        <div class="game-board" id="game-board"></div>
-        <button class="restart-button" onclick="restartGame()">Restart Game</button>
-    </div>
-    <div id="debug"></div>
+    <div class="game-board">
 
-    <button id="homeButton" onclick="goToHomeScreen()">Back to Home Screen</button>
+        <h1>Memory Game</h1>
+        <div class="up">
+
+            
+            <div id="scoreboard">
+                <h2>Scoreboard</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Name</th>
+                            <th>Score</th>
+                        </tr>
+                    </thead>
+                    <tbody id="scoreboardBody">
+                        <!-- Scoreboard data will be dynamically added here -->
+                    </tbody>
+                </table>
+            </div>
+            <div>
+                <label for="category">Choose a category of words to learn:</label>
+                <select id="category">
+                    <option value="animals">Animals</option>
+                    <option value="colors">Colors</option>
+                    <option value="fruits">Fruits</option>
+                    <option value="vegetables">Vegetables</option>
+                </select>
+            </div>
+            
+        </div>
+            
+          
+        
+        <div class="memory-game">
+            <div>
+
+                <div class="game-board" id="game-board"></div>
+                <button class="restart-button" onclick="restartGame()">Restart Game</button>
+            </div>
+
+                <div class="instructions">
     
-    <script src="js/memory.js"></script>
+                    <p>Click on the cards to find matching pairs !</p>
+                    <p>----------------</p>
+                    <p>Number of moves: <span id="moves"></span></p>
+                    <p>Number of pairs found: <span id="score"></span></p>
+                    <p>Words found:</p>
+                    <!-- <p><span id="wordsFound"></span></p> -->
+                    <table id="wordsFound">
+                        <thead>
+                            <tr>
+                                <th>English</th>
+                                <th>French</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                        </tbody>
+                    </table>
+                </div>
+                
+            
+        </div>
+        
+        <div id="debug"></div>
+        <script src="js/memory.js"></script>
+    </div>
+    
+    <button id="homeButton" onclick="goToHomeScreen()">Back to Home Screen</button>
+
 </body>
 </html>
