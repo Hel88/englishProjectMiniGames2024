@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background-color: #c5ffe1;
     margin: 0;
     padding: 0;
 }
@@ -178,4 +178,23 @@ label {
     align-items: center;
     margin-bottom: 20px;
 
+}
+
+
+#homeButton {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #333; /* Dark Grey */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#homeButton:hover {
+    background-color: #555; /* Darker Grey on Hover */
 }

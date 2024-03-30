@@ -115,3 +115,7 @@ function restartGame() {
 
 // Start the game
 initGame();
+
+function goToHomeScreen() {
+    window.location.href = "../homepage.html";
+}

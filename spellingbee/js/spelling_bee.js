@@ -171,3 +171,6 @@ window.onload = function() {
 document.getElementById('checkButton').addEventListener('click', checkSpelling);
 document.getElementById('restartButton').addEventListener('click', launchGame);
 
+function goToHomeScreen() {
+  window.location.href = "../homepage.html";
+}

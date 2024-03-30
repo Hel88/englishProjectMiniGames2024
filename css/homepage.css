@@ -2,7 +2,7 @@ body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f8f9fa; /* Light gray */
+    background-color: #fdacac; 
 }
 
 .container {
@@ -36,7 +36,6 @@ h1 {
     width: 500px; /* Set desired width */
     height: 100px; /* Set desired height */
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
 }
 
