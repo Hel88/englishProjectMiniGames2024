@@ -51,9 +51,72 @@ const insects = [
     // {english: "Cockroach", french: "Cafard"},
     // {english: "Scorpion", french: "Scorpion"},
 ];
-const choices = [animals, aquaticAnimals, insects];
 
-const categoryNames = ['Animals', 'Aquatic Animals', 'Insects'];
+const food = [
+    {english: "Apple", french: "Pomme"},
+    {english: "Pineapple", french: "Ananas"},
+    {english: "Strawberry", french: "Fraise"},
+    {english: "Grape", french: "Raisin"},
+    {english: "Watermelon", french: "Pastèque"},
+    {english: "Cherry", french: "Cerise"},
+    {english: "Pear", french: "Poire"},
+    {english: "Peach", french: "Pêche"},
+    {english: "Plum", french: "Prune"},
+    {english: "Lemon", french: "Citron"},
+    {english: "Mango", french: "Mangue"},
+    {english: "Coconut", french: "Noix de coco"},
+]
+
+const colors = [
+    {english: "Red", french: "Rouge"},
+    {english: "Blue", french: "Bleu"},
+    {english: "Green", french: "Vert"},
+    {english: "Yellow", french: "Jaune"},
+    {english: "Orange", french: "Orange"},
+    {english: "Purple", french: "Violet"},
+    {english: "Pink", french: "Rose"},
+    {english: "Brown", french: "Marron"},
+    {english: "Black", french: "Noir"},
+    {english: "White", french: "Blanc"},
+    {english: "Grey", french: "Gris"},
+    {english: "Silver", french: "Argent"},
+    {english: "Gold", french: "Or"},
+]
+
+const music = [
+    {english: "Guitar", french: "Guitare"},
+    {english: "Violin", french: "Violon"},
+    {english: "Drums", french: "Batterie"},
+    {english: "Flute", french: "Flûte"},
+    {english: "Trumpet", french: "Trompette"},
+    {english: "Saxophone", french: "Saxophone"},
+    {english: "Harp", french: "Harpe"},
+    {english: "Accordion", french: "Accordéon"},
+    {english: "Clarinet", french: "Clarinette"},
+    {english: "Tambourine", french: "Tambourin"}
+]
+
+const linkingWords1 = [
+    {english: "However", french: "Cependant"},
+    {english: "Although", french: "Bien que"},
+    {english: "Moreover", french: "De plus"},
+    {english: "Furthermore", french: "En outre"},
+    {english: "Nevertheless", french: "Néanmoins"},
+    {english: "Otherwise", french: "Sinon"},
+]
+const linkingWords2 = [
+    {english: "Instead", french: "Au lieu de"},
+    {english: "Likewise", french: "De même"},
+    {english: "Otherwise", french: "Sinon"},
+    {english: "Thus", french: "Ainsi"},
+    {english: "Moreover", french: "De plus"},
+    {english: "Despite", french: "Malgré"},
+
+]
+
+const choices = [animals, aquaticAnimals, insects, food, colors, music, linkingWords1, linkingWords2];
+
+const categoryNames = ['Animals', 'Aquatic Animals', 'Insects', 'Food', 'Colors', 'Music', 'Linking Words1', 'Linking Words2'];
 
 
 
@@ -105,7 +168,6 @@ function initGame() {
     cards = [];
     document.getElementById('score').textContent = score;
     document.getElementById('moves').textContent = numberOfMoves;
-    //document.getElementById('wordsFound').textContent = wordsFound;
     
     
     // Create two cards for each word
@@ -209,6 +271,9 @@ function checkMatch() {
 
 // Restart the game
 function restartGame() {
+    wordsFound = [];
+    document.getElementById('wordsFound').textContent = wordsFound;
+
     score = 0;
     numberOfMoves = 0;
     flippedCards = [];
