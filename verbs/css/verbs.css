@@ -1,0 +1,167 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgb(197, 235, 230);
+    margin: 0;
+    padding: 0;
+}
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+#game-board {
+
+    max-width: 1000px;
+    min-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+}
+
+#resultDisplay {
+    font-size: 20px;
+    margin-bottom: 20px;
+    max-width: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#answersDisplay{
+    margin-bottom: 20px;
+    max-width: fit-content;
+    margin: auto;
+    padding: 1% 3% 1% 3%;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    color: #4d4d4d;
+
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  #score {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  
+  #verb-container {
+    margin-top: 30px;
+    
+    
+  }
+  
+  input[type="text"] {
+    margin: 5px;
+    padding: 10px;
+    width: 80%;
+  }
+  
+  #submit {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4d9693;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  #submit:hover {
+    background-color: #3f7c7a;
+  }
+  
+  #horiz{
+    display: flex; 
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    
+}
+  
+
+/* Scoreboard styles */
+#scoreboard {
+    flex: 1;
+    max-width: 400px;
+    min-width: 300px;
+    margin: auto 1%;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    color: #4d4d4d;
+    font-size: 16px;
+    line-height: 24px;
+    
+}
+
+#scoreboard h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#scoreboard p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+/* Scoreboard table styles */
+#scoreboard table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#scoreboard th,
+#scoreboard td {
+    width: 50%;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    text-align: left;
+}
+
+#scoreboard th {
+    background-color: #f0f0f0;
+}
+
+#scoreboard tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#clue{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+
+}
+
+#homeButton {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #333; /* Dark Grey */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#homeButton:hover {
+    background-color: #555; /* Darker Grey on Hover */
+}

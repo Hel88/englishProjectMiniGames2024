@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Irregular Verbs Quiz</title>
+    <link rel="stylesheet" href="css/verbs.css">
+    <script src="js/scoreboard.js" defer></script>
+
+</head>
+
+<body>
+    <div id="game-board">
+        <h1>Irregular Verbs Quiz</h1>
+        <div id="horiz">
+
+            <div id="game-container">
+
+                <div>
+
+                    <div id="verb-container">
+                        <label for="infinitive">Infinitive:</label>
+                        <input type="text" id="infinitive"><br>
+                        <label for="past-simple">Past Simple:</label>
+                        <input type="text" id="past-simple"><br>
+                        <label for="past-participle">Past Participle:</label>
+                        <input type="text" id="past-participle"><br>
+                        <label for="translation">Translation (French):</label>
+                        <input type="text" id="translation"><br>
+                        <button id="submit">Check Answer</button>
+                    </div>
+                    <div id="score-display">
+                        <p id="score">Score: 0</p>
+                    </div>
+                    
+                </div>
+            </div>
+            <div id="scoreboard">
+                <h2>Scoreboard</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Name</th>
+                            <th>Score</th>
+                        </tr>
+                    </thead>
+                    <tbody id="scoreboardBody">
+                        <!-- Scoreboard data will be dynamically added here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div id="result-display">
+            <p id="result"></p>
+        </div>
+        <div id="answersDisplay">
+
+        </div>
+    </div>
+
+    <script src="js/verbs.js"></script>
+</body>
+
+</html>
