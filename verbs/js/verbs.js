@@ -161,6 +161,14 @@ document.addEventListener('DOMContentLoaded', function () {
   // Événements
   submitButton.addEventListener('click', checkAnswers);
   
+
+
+
+  function goToHomeScreen() {
+    window.location.href = "../homepage.html";
+}
+
+
   // Démarrage du jeu
   initGame();
   
