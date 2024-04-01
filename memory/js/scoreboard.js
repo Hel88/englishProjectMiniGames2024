@@ -1,15 +1,17 @@
-let category = "fruits";
-let spellingBeeScores = [];
+//let category = "animals";
+let memoryScores = [];
 
-function displaySpellingBeeScores(scores, elementId) {
+function displaymemoryScores(scores, elementId) {
     const scoreboardBody = document.getElementById(elementId);
 
     // Clear the table body
     scoreboardBody.innerHTML = '';
 
-    
-    // Loop through the scores and populate the table
-    scores.forEach((entry, index) => {
+    // Get the top 5 scores
+    const topScores = scores.slice(0, 5);
+
+    // Loop through the top scores and populate the table
+    topScores.forEach((entry, index) => {
         const row = document.createElement('tr');
         row.innerHTML = `
             <td>${index + 1}</td>
@@ -21,40 +23,51 @@ function displaySpellingBeeScores(scores, elementId) {
 }
 
 
+
+// function resetScoreboard() {
+//     // Réinitialiser le tableau des scores
+//     memoryScores = [];
+//     // Supprimer les données du localStorage
+//     localStorage.removeItem('memoryScores');
+//     // Mettre à jour l'affichage du scoreboard
+//     displaymemoryScores(memoryScores, "scoreboardBody");
+//   }
+  
+
 // Function to add a player score to the scoreboard and save it to localStorage
 function addPlayerScore(score) {
-    let savedScores = localStorage.getItem('spellingBeeScores' + category);
-    spellingBeeScores = savedScores ? JSON.parse(savedScores) : [];
+    let savedScores = localStorage.getItem('memoryScores');
+    memoryScores = savedScores ? JSON.parse(savedScores) : [];
 
-    if (spellingBeeScores.length < 20 || score > (spellingBeeScores[19]?.score || 0)) {
-        const playerName = prompt("Congratulations! You've made it to the top 20! Please enter your name:");
+    if (memoryScores.length < 5 || score > (memoryScores[4]?.score || 0)) {
+        const playerName = prompt("Congratulations! You've made it to the top 5! Please enter your name:");
         if (playerName) {
             // Add the player's score to the scoreboard
-            spellingBeeScores.push({ name: playerName, score: score });
+            memoryScores.push({ name: playerName, score: score });
             // Sort the scoreboard by score in descending order
-            spellingBeeScores.sort((a, b) => b.score - a.score);
-            // Keep only the top 20 scores
-            spellingBeeScores = spellingBeeScores.slice(0, 20);
+            memoryScores.sort((a, b) => b.score - a.score);
+            // Keep only the top 5 scores
+            memoryScores = memoryScores.slice(0, 5);
             // Update the scoreboard display
-            displaySpellingBeeScores(spellingBeeScores, "scoreboardBody");
+            displaymemoryScores(memoryScores, "scoreboardBody");
 
             // Save scoreboard data to localStorage
-            localStorage.setItem('spellingBeeScores' + category, JSON.stringify(spellingBeeScores));
+            localStorage.setItem('memoryScores', JSON.stringify(memoryScores));
         }
     } else {
-        alert("Your score doesn't qualify to be in the top 20. Keep practicing!");
+        alert("Your score doesn't qualify to be in the top 5. Keep practicing!");
     }
 }
 
 // Function to load scoreboard data from localStorage
-function loadScoreboardData(nCategory) {
-    category = nCategory;
-    const savedScores = localStorage.getItem('spellingBeeScores'+category);
+function loadScoreboardData() {
+    const savedScores = localStorage.getItem('memoryScores');
     if (savedScores) {
-        spellingBeeScores = JSON.parse(savedScores);
-        displaySpellingBeeScores(spellingBeeScores, "scoreboardBody");
-    }else{
-        spellingBeeScores = [];
-        displaySpellingBeeScores(spellingBeeScores, "scoreboardBody");
+        memoryScores = JSON.parse(savedScores);
+        displaymemoryScores(memoryScores, "scoreboardBody");
+    } else {
+        memoryScores = [];
+        displaymemoryScores(memoryScores, "scoreboardBody");
     }
 }
+

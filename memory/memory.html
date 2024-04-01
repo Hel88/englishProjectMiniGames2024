@@ -29,14 +29,10 @@
                     </tbody>
                 </table>
             </div>
-            <div>
-                <label for="category">Choose a category of words to learn:</label>
-                <select id="category">
-                    <option value="animals">Animals</option>
-                    <option value="colors">Colors</option>
-                    <option value="fruits">Fruits</option>
-                    <option value="vegetables">Vegetables</option>
-                </select>
+            <div id="scoreboard">
+                <label for="category">Choose a category of words to learn, then restart the game:</label>
+                <select id="category"></select>
+                <button class="restart-button" onclick="restartGame()">Restart Game</button>
             </div>
             
         </div>
@@ -46,9 +42,9 @@
         <div class="memory-game">
             <div>
 
-                <div class="game-board" id="game-board"></div>
-                <button class="restart-button" onclick="restartGame()">Restart Game</button>
+            <div class="game-board" id="game-board"></div>
             </div>
+            
 
                 <div class="instructions">
     
@@ -75,6 +71,39 @@
         </div>
         
         <div id="debug"></div>
+</div>
+
+<div class="game-board">
+
+
+        <button id="createCategoryButton">Create a new category</button>
+
+<div class="new_cat" style="display: none;">
+
+    <h1>Create a new category</h1>
+    <form id="newCategoryForm">
+        <label for="categoryName">Category name:</label>
+        <input type="text" id="categoryName" required><br>
+        <table>
+            <thead>
+                <tr>
+                    <th>English</th>
+                    <th>French</th>
+                </tr>
+            </thead>
+            <tbody id="newWordsBody">
+                <tr>
+                    <td><input type="text" class="newEnglishWord" id="newEnglishWord" required></td>
+                    <td><input type="text" class="newFrenchWord" id="newFrenchWord" required></td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="button" id="addWordButton" onclick="addWord()">Add word</button><br>
+        <button type="submit" onclick="createCategory()">Create category</button>
+    </form>
+    
+</div>
+
         <script src="js/memory.js"></script>
     </div>
     
