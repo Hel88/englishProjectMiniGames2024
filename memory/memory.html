@@ -80,11 +80,12 @@
 
 <div class="new_cat" style="display: none;">
 
-    <h1>Create a new category</h1>
+    <div class="instructions"> 
+
     <form id="newCategoryForm">
         <label for="categoryName">Category name:</label>
         <input type="text" id="categoryName" required><br>
-        <table>
+        <table id="categoryTable">
             <thead>
                 <tr>
                     <th>English</th>
@@ -101,6 +102,8 @@
         <button type="button" id="addWordButton" onclick="addWord()">Add word</button><br>
         <button type="submit" onclick="createCategory()">Create category</button>
     </form>
+</div>
+
     
 </div>
 
