@@ -1,6 +1,11 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: rgb(187, 205, 255);
+    background:
+      radial-gradient(25% 25% at 25% 25%,#bbcdff 99%,#0000 101%) 17px 17px/calc(2*17px) calc(2*17px),
+      radial-gradient(25% 25% at 25% 25%,#bbcdff 99%,#0000 101%) 0 0/calc(2*17px) calc(2*17px),
+      radial-gradient(50% 50%,#5582ff 98%,#0000) 0 0/17px 17px,
+      repeating-conic-gradient(#5582ff 0 25%,#bbcdff 0 50%) 
+        calc(.5*17px) 0/calc(2*17px) 17px;
     margin: 0;
     padding: 0;
 }

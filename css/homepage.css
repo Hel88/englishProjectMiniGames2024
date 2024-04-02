@@ -2,7 +2,26 @@ body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #fdacac; 
+    /*background-color: #fdacac;*/ 
+    background:
+      radial-gradient(17px at calc(100% + calc(17px*.866)) 50%,#fdacac 99%, #0000 101%) 0 calc(-5*17px/2),
+      radial-gradient(17px at calc(100% + calc(17px*.866)) 50%,#fdacac 99%, #0000 101%) calc(-2*calc(17px*.866)) calc(17px/2),
+      radial-gradient(17px at 100% 50%,#ff4242 99%, #0000 101%) 0 calc(-2*17px),
+      radial-gradient(17px,#fdacac 99%, #0000 101%) calc(17px*.866) calc(-5*17px/2),
+      radial-gradient(17px,#ff4242 99%, #0000 101%) calc(17px*.866) calc( 5*17px/2),
+      radial-gradient(17px at 100% 100%,#fdacac 99%, #0000 101%) 0 calc(-1*17px),   
+      radial-gradient(17px at 0%   50% ,#fdacac 99%, #0000 101%) 0 calc(-4*17px),
+      radial-gradient(17px,#ff4242 99%, #0000 101%) calc(-1*calc(17px*.866)) calc(-7*17px/2),
+      radial-gradient(17px,#fdacac 99%, #0000 101%) calc(-1*calc(17px*.866)) calc(-5*17px/2),
+      radial-gradient(17px at 100% 50%,#ff4242 99%, #0000 101%) calc(-2*calc(17px*.866)) 17px,
+      radial-gradient(17px,#fdacac 99%, #0000 101%) calc(-1*calc(17px*.866)) calc(17px/ 2),
+      radial-gradient(17px,#ff4242 99%, #0000 101%) calc(-1*calc(17px*.866)) calc(17px/-2),
+      radial-gradient(17px,#fdacac 99%, #0000 101%) 0 calc(-1*17px),
+      radial-gradient(17px,#ff4242 99%, #0000 101%) calc(17px*.866) calc(17px/-2),
+      radial-gradient(17px,#fdacac 99%, #0000 101%) calc(17px*.866) calc(17px/ 2) 
+      #ff4242;
+background-size: calc(4*calc(17px*.866)) calc(6*17px);
+
 }
 
 .container {
@@ -54,10 +73,6 @@ h1 {
     transition: background-color 0.3s ease;
 }
 
-.gamelink:hover {
-    background-color: #ff4757; /* Darker Red */
-}
-
 .gamelink a {
     text-decoration: none;
     color: #fff;
@@ -82,3 +97,34 @@ h1 {
     animation-duration: 12s; /* Base duration */
 }
  
+.game1 {
+    background-color: #6adda1; 
+}
+
+.game1:hover {
+    background-color: #3ecf8e;
+}
+
+.game2 {
+    background-color: #7a7bcf; 
+}
+
+.game2:hover {
+    background-color: #4d4dff; 
+}
+
+.game3 {
+    background-color: #ffaa00;
+}
+
+.game3:hover {
+    background-color: #ff8800; 
+}
+
+.game4 {
+    background-color: #ffa0ea; 
+}
+
+.game4:hover {
+    background-color: #ff7ec5; 
+}
