@@ -2,10 +2,10 @@ const animals = [
     { english: "Dog", french: "Chien" },
     { english: "Cat", french: "Chat" },
     {english: "Horse", french: "Cheval"},
-    {english: "Cow", french: "Vache"},
-    {english: "Sheep", french: "Mouton"},
-    {english: "Rabbit", french: "Lapin"},
-    {english: "Goat", french: "Chèvre"},
+    // {english: "Cow", french: "Vache"},
+    // {english: "Sheep", french: "Mouton"},
+    // {english: "Rabbit", french: "Lapin"},
+    // {english: "Goat", french: "Chèvre"},
     // {english: "Pig", french: "Cochon"},
     // {english: "Chicken", french: "Poulet"},
     // {english: "Turkey", french: "Dinde"},
@@ -215,11 +215,8 @@ function checkMatch() {
     let secondcard = flippedCards[1].word+'';
     let firstcard_translation;
     let firstcard_is_english;
-    // let word1 = flippedCards[0].word+'';
-    // let word2 = flippedCards[1].word+'';
 
     for (let m = 0; m < words.length; m++) {
-        
         if (words[m].english === firstcard){
             firstcard_translation = words[m].french;
             firstcard_is_english = true;
@@ -229,17 +226,23 @@ function checkMatch() {
             firstcard_is_english = false;
         }
     }
-    
+
     if (firstcard_translation === secondcard) {
-            flippedCards.forEach(card => {
+        flippedCards.forEach(card => {
             card.element.classList.add('matched');
             card.matched = true;
+            
         });
         score++;
+        wordsFound = [];
+        // Réinitialiser le tableau flippedCards
+        flippedCards = [];
         if (firstcard_is_english){
             wordsFound.push({english:firstcard, french:firstcard_translation});
         }else{
             wordsFound.push({english:firstcard_translation, french:firstcard});
+            // Réinitialiser le tableau flippedCards
+            flippedCards = [];
         }
 
         // Sélection du tableau
@@ -252,8 +255,6 @@ function checkMatch() {
             cell2.textContent = word.french;
         })
 
-        wordsFound=[];
-        
         document.getElementById('score').textContent = score;
         if (score === words.length) {
             const scoreJoueur = Math.round(1/(numberOfMoves-score)*100);
@@ -268,7 +269,6 @@ function checkMatch() {
     }
     flippedCards = [];
 }
-
 // Restart the game
 function restartGame() {
     wordsFound = [];
