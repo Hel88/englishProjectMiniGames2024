@@ -272,15 +272,15 @@ function checkMatch() {
 }
 // Restart the game
 function restartGame() {
-    wordsFound = [];
-    document.getElementById('wordsFound').textContent = wordsFound;
+    // wordsFound = [];
+    // document.getElementById('wordsFound').textContent = wordsFound;
 
     score = 0;
     numberOfMoves = 0;
     flippedCards = [];
-    initGame();
     const wordsFoundTableBody = document.querySelector('#wordsFound tbody');
     wordsFoundTableBody.innerHTML = "";
+    initGame();
 
 }
 
