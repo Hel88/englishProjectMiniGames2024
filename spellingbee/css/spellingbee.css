@@ -1,6 +1,12 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #c5ffe1;
+    background: 
+      radial-gradient(calc(1.28*17px + 6.38px/2) at left 50% bottom calc(-.8*17px),#c5ffe1 calc(100% - 6.38px),#4ba24b calc(101% - 6.38px) 100%,#0000 101%) calc(2*17px) calc(-1*calc(1.5*17px + 6.38px)),
+      radial-gradient(calc(1.28*17px + 6.38px/2) at left 50% bottom calc(-.8*17px),#5fffac calc(100% - 6.38px),#4ba24b calc(101% - 6.38px) 100%,#0000 101%) calc(-1*17px) calc(calc(1.5*17px + 6.38px)/-2),
+      radial-gradient(calc(1.28*17px + 6.38px/2) at left 50% top    calc(-.8*17px),#5fffac calc(100% - 6.38px),#4ba24b calc(101% - 6.38px) 100%,#0000 101%) 0 calc(1.5*17px + 6.38px),
+      radial-gradient(calc(1.28*17px + 6.38px/2) at left 50% top    calc(-.8*17px),#c5ffe1 calc(100% - 6.38px),#4ba24b calc(101% - 6.38px) 100%,#0000 101%) 17px calc(calc(1.5*17px + 6.38px)/ 2),
+      linear-gradient(#c5ffe1 50%,#5fffac 0);
+    background-size: calc(4*17px) calc(1.5*17px + 6.38px);
     margin: 0;
     padding: 0;
 }
@@ -108,7 +114,13 @@ label {
 }
 
 .game-over-background {
-    background-color: rgba(255, 0, 0, 0.5); /* Red background with 50% opacity */
+    background: 
+      radial-gradient(calc(1.28*17px + 6.38px/2) at left 50% bottom calc(-.8*17px),#ffc5c5 calc(100% - 6.38px),#a24b4b calc(101% - 6.38px) 100%,#0000 101%) calc(2*17px) calc(-1*calc(1.5*17px + 6.38px)),
+      radial-gradient(calc(1.28*17px + 6.38px/2) at left 50% bottom calc(-.8*17px),#ff5f5f calc(100% - 6.38px),#a24b4b calc(101% - 6.38px) 100%,#0000 101%) calc(-1*17px) calc(calc(1.5*17px + 6.38px)/-2),
+      radial-gradient(calc(1.28*17px + 6.38px/2) at left 50% top    calc(-.8*17px),#ff5f5f calc(100% - 6.38px),#a24b4b calc(101% - 6.38px) 100%,#0000 101%) 0 calc(1.5*17px + 6.38px),
+      radial-gradient(calc(1.28*17px + 6.38px/2) at left 50% top    calc(-.8*17px),#ffc5c5 calc(100% - 6.38px),#a24b4b calc(101% - 6.38px) 100%,#0000 101%) 17px calc(calc(1.5*17px + 6.38px)/ 2),
+      linear-gradient(#ffc5c5 50%,#ff5f5f 0);
+    background-size: calc(4*17px) calc(1.5*17px + 6.38px);
 }  
 
 .restart-button {
