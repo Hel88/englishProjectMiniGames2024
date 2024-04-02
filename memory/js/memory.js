@@ -247,6 +247,7 @@ function checkMatch() {
 
         // Sélection du tableau
         var tableBody = document.querySelector('#wordsFound tbody');
+        //tableBody.innerHTML = ''; // Réinitialiser le contenu du tableau
         wordsFound.forEach(function(word){
             var row = tableBody.insertRow();
             var cell1 = row.insertCell(0);
@@ -342,6 +343,9 @@ function createCategory(){
     newOption.textContent = categoryName;
     categorySelect.appendChild(newOption);
 
+    // Update the words variable with the new category
+    words = newWords;
+
     // Reset the form
     document.getElementById('newCategoryForm').reset();
     const newWordsBody = document.getElementById('newWordsBody');
@@ -354,6 +358,7 @@ function createCategory(){
 
     // Hide the new category form
     createCategorySection.style.display = 'none';
+    
 }
 
 
