@@ -45,9 +45,10 @@ function checkGuess() {
     if (guess === words[currentWordIndex]) {
         document.getElementById('result').textContent = 'Correct!';
         setTimeout(generateWord, 1000); 
+        numberOfTries = 0;
     } else {
         document.getElementById('result').textContent = 'Incorrect. Try again!';
-        if (numberOfTries === 3) {
+        if (numberOfTries == 3) {
             alert("You have reached the maximum number of tries. The correct word is " + words[currentWordIndex]);
             numberOfTries = 0;
             setTimeout(generateWord, 1000);
